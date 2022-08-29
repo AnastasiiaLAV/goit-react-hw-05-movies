@@ -1,10 +1,11 @@
 import TrendingMovies from "components/TrendingMovies/TrendingMovies";
+import styled from "styled-components";
 
 const HomePage = () => {
 
     return (
         <div>
-            <h2>Trending today</h2>
+            <Title>Trending today</Title>
             <TrendingMovies/>
         </div>
 
@@ -12,3 +13,8 @@ const HomePage = () => {
 }
 
 export default HomePage;
+
+
+const Title = styled.h2`
+    text-align: center;
+`

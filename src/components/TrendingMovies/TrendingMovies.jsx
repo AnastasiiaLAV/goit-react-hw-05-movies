@@ -4,6 +4,7 @@ import { getTrending } from "helper/api";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { PacmanLoader } from "react-spinners";
+import { GalleryMovies, GalleryMoviesCard, GalleryMoviesImg } from "./TrendingMovies.styled";
 
 
 const TrendingMovies = () => {
@@ -50,14 +51,17 @@ const TrendingMovies = () => {
 
     const { items, loading, error } = state;
 
-    const elements = items.map(({ id, title }) => <li key={id}>
-                <Link to={`/movies/${id}`}>{title}</Link>
-            </li>);
-
+    const elements = items.map(({ id, title, poster_path }) => 
+            <GalleryMoviesCard key={id}>
+                <Link to={`/movies/${id}`}>
+                    <GalleryMoviesImg src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={title} />
+                    {title}
+                </Link>
+            </GalleryMoviesCard>);
     return (
         <>
             {loading && <Loader />}
-            <ol>{elements}</ol>
+            <GalleryMovies>{elements}</GalleryMovies>
             {error && <p>...Posts load failed<PacmanErrorSpan><PacmanLoader color="#eb1052" size={10}/></PacmanErrorSpan></p>}
         </>
     )

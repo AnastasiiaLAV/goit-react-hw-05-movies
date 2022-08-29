@@ -14,10 +14,10 @@ export const Searchbar = styled.header`
     padding-top: 12px;
     padding-bottom: 12px;
     color: #fff;
-    background-color: #2c7b19;
-    box-shadow: 0px 2px 4px -1px rgb(234, 11, 34, 0.4), 0px 4px 5px 0px rgb(125, 5, 34, 0.4), 0px 1px 10px 0px rgb(85, 73, 75, 0.5);
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
+    background: linear-gradient(90deg, #139e32a9, #c1ff05c0, #01eeffa6 );
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 10px 0px,
+            rgba(0, 0, 0, 0.5) 0px 2px 15px 0px;
+    border-radius: 5px;
     `
 
 export const SearchForm = styled.form`
@@ -28,7 +28,8 @@ export const SearchForm = styled.form`
     background-color: #fff;
     border-radius: 5px;
     overflow: hidden;
-    box-shadow: 0px 2px 4px -1px rgb(234, 11, 34, 0.4), 0px 4px 5px 0px rgb(125, 5, 34, 0.4), 0px 1px 10px 0px rgb(85, 73, 75, 0.5);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 10px 0px,
+            rgba(0, 0, 0, 0.5) 0px 2px 15px 0px;
 `
 export const SearchFormBtn = styled.button`
     display: inline-block;

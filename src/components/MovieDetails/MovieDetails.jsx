@@ -50,9 +50,6 @@ const MovieDetails = () => {
 
     const { loading, error } = state;
     const { title, vote_average, overview, poster_path, genres} = state.item;
-    // const elements = item.map(({ id, title }) => <li key={id}>
-    //             <Link to={`/movies/${id}`}>{title}</Link>
-    //         </li>);
     
     console.log('state.item', state.item)
     return (
