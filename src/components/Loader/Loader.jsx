@@ -11,7 +11,7 @@ function Loader() {
         cssOverride={{}}
         margin={2}
         size={20}
-        speedMultiplier={2}
+        speedMultiplier={5}
       />
     </Wrapper>
   );

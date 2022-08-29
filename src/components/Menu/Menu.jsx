@@ -2,11 +2,6 @@
 import { MenuUl, MenuLi, MenuNavLink } from "./Menu.styled";
 import { Outlet } from 'react-router-dom';
 
-const getActive = ({ isActive }) => {
-    const classActive = isActive ? `${MenuNavLink} ${MenuNavLink.active}` : MenuNavLink;
-    return classActive;
-}
-
 const Menu = () => {
     return (
     <>

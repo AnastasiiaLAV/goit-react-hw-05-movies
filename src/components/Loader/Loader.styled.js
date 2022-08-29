@@ -5,3 +5,8 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+export const PacmanErrorSpan = styled.span`
+display: flex;
+justify-content: space-around;
+`

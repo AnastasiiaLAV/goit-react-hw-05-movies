@@ -1,7 +1,9 @@
+import Serchbar from "../../components/Searchbar/Searchbar";
+
 const MoviesPage = () => {
     return (
         <div>
-            <h2>Movies</h2>
+            <Serchbar/>
         </div>
     );
 }

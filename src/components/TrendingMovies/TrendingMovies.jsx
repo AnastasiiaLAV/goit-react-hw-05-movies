@@ -1,4 +1,5 @@
 import Loader from "components/Loader/Loader";
+import { PacmanErrorSpan } from "components/Loader/Loader.styled";
 import { getTrending } from "helper/api";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -57,7 +58,7 @@ const TrendingMovies = () => {
         <>
             {loading && <Loader />}
             <ol>{elements}</ol>
-            {error && <p>...Posts load failed<span><PacmanLoader color="#eb1052" size={10}/></span></p>}
+            {error && <p>...Posts load failed<PacmanErrorSpan><PacmanLoader color="#eb1052" size={10}/></PacmanErrorSpan></p>}
         </>
     )
 }
