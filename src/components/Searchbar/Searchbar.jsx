@@ -5,16 +5,21 @@ import PropTypes from 'prop-types';
 import {Searchbar, SearchForm, SearchFormBtn,SearchFormBtnLable,SearchFormInput} from './Searchbar.styled.js'
 
 export default function Serchbar({onSubmitForm}) {
-    const [queryImage, setQueryImage] = useState('');
+    const [state, setState] = useState({query:''});
 
-    const handleNameChange = event => {
-        setQueryImage(event.currentTarget.value.toLowerCase());
+    const handleNameChange = ({currentTarget}) => {
+        console.log('target', currentTarget.value);
+        const {name, value} = currentTarget;
+        setState({
+            ...state,
+            [name]: value,
+            });
     }
 
     const handleSubmit = event => {
         event.preventDefault();
-        onSubmitForm(queryImage);
-        setQueryImage('');
+        onSubmitForm({...state});
+        setState({query:''});
     }
     
     return (
@@ -26,13 +31,14 @@ export default function Serchbar({onSubmitForm}) {
             </SearchFormBtn>
 
             <SearchFormInput
-            className="input"
+            name="query"
             type="text"
             autoComplete="off"
             autoFocus
             placeholder="Search movies"
-            value={queryImage}
+            value={state.query}
             onChange={handleNameChange}
+            required
             />
         </SearchForm>
     </Searchbar>
