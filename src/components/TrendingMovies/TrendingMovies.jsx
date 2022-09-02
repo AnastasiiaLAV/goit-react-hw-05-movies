@@ -1,11 +1,8 @@
+import Error from "components/Error/Error";
 import Loader from "components/Loader/Loader";
-import { PacmanErrorSpan } from "components/Loader/Loader.styled";
 import MoviesList from "components/MoviesList/MoviesList";
 import { getTrending } from "helper/api";
 import { useState, useEffect } from "react";
-import { PacmanLoader } from "react-spinners";
-
-
 
 const TrendingMovies = () => {
     const [state, setState] = useState({
@@ -54,7 +51,7 @@ const TrendingMovies = () => {
         <>
             {loading && <Loader />}
             {items.length > 0 && <MoviesList items={items}/>}
-            {error && <p>...Posts load failed<PacmanErrorSpan><PacmanLoader color="#eb1052" size={10}/></PacmanErrorSpan></p>}
+            {error && <Error/>}
         </>
     )
 }

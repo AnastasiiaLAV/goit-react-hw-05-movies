@@ -1,14 +1,15 @@
 import Loader from "components/Loader/Loader";
-import { PacmanErrorSpan } from "components/Loader/Loader.styled";
 import { getMovieDetails } from "helper/api";
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { PacmanLoader } from "react-spinners";
+import { Outlet, useParams } from "react-router-dom";
+import BtnGoBack from "components/BtnGoBack/BtnGoBack";
+import Chackman from "../../image/58e0ccb473a4915b2e1fa0fa.png"
+import { TitleH2, CardNavLink, CardTitle, DivCard, DivLink, DivText, Image, Text } from "./MovieDetails.styled";
+import Error from "components/Error/Error";
 
 const MovieDetails = () => {
     const {movieId} = useParams();
-    const navigate = useNavigate();
-    console.log('movie_id', movieId)
+
     const [state, setState] = useState({
     item: {},
     loading: false,
@@ -48,28 +49,45 @@ const MovieDetails = () => {
         fetchMovieDetails();
     }, [movieId]);
 
-    const goBack = () => navigate(-1);
-    const { loading, error } = state;
-    const { title, vote_average, overview, poster_path, genres} = state.item;
-
+    const { item, loading, error } = state;
+    const { title, overview, poster_path, genres} = state.item;
+    const voteAverage = Math.ceil(item.vote_average * 10);
     return (
-        <div>
-            <button onClick={goBack}>Go back</button>
+        <>
+            <BtnGoBack/>
 
             {loading && <Loader />}
             
-            {error && <p>...Posts load failed<PacmanErrorSpan><PacmanLoader color="#eb1052" size={10}/></PacmanErrorSpan></p>}
-            <h2>Movie Details</h2>
-            <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={title}/>
-            <h2>{title}</h2>
-            <p>{vote_average}</p>
-            <p>{overview}</p>
-            <p>{genres &&
-                genres.map(({ id, name }) => (
-            <p key={id}>{name}</p>
-            ))}</p>
+            {error && <Error/>}
             
-        </div>
+            <TitleH2>Movie Details</TitleH2>
+        <DivCard>
+            {poster_path ? (
+                <Image src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={title} />) : 
+                (<Image src={Chackman} alt={title}/>)}
+        <DivText>
+            <CardTitle>{title}</CardTitle>
+            <Text><b>Rating:</b> {voteAverage}%</Text>
+            <Text><b>Overview:</b> {overview}</Text>
+            <Text><b>Genres:</b>
+                {genres &&
+                    genres.map(({ id, name }) => (
+                    <Text key={id}>{name}</Text>
+                ))}
+            </Text>
+        </DivText>
+        </DivCard>
+        <DivLink>
+            <CardNavLink to={`/movies/${movieId}/cast`}>
+                Cast
+            </CardNavLink>
+            <CardNavLink to={`/movies/${movieId}/reviews`}>
+                Reviews
+            </CardNavLink>
+            
+        </DivLink>
+        <Outlet/>
+        </>
     );
 }
 

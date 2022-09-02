@@ -6,7 +6,7 @@ margin: 10px;
 display: flex;
 justify-content: center;
 text-align: center;
-font-size: 20px;
+font-size: 24px;
 font-weight: 700;
 `
 
