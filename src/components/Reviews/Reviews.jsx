@@ -23,7 +23,6 @@ const Reviews = () => {
                 }));
 
                 const data = await getMovieReviews(movieId);
-                console.log('data', data)
                 setState(prevState => ({
                     ...prevState,
                     items: [...data.results],

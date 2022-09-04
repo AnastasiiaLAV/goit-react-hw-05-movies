@@ -8,7 +8,6 @@ export default function Serchbar({onSubmitForm}) {
     const [state, setState] = useState({query:''});
 
     const handleNameChange = ({currentTarget}) => {
-        console.log('target', currentTarget.value);
         const {name, value} = currentTarget;
         setState({
             ...state,

@@ -1,7 +1,7 @@
 import Loader from "components/Loader/Loader";
 import { getMovieDetails } from "helper/api";
 import { useState, useEffect } from "react";
-import { Outlet, useParams } from "react-router-dom";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 import BtnGoBack from "components/BtnGoBack/BtnGoBack";
 import Chackman from "../../image/58e0ccb473a4915b2e1fa0fa.png"
 import { TitleH2, CardNavLink, CardTitle, DivCard, DivLink, DivText, Image, Text } from "./MovieDetails.styled";
@@ -15,6 +15,8 @@ const MovieDetails = () => {
     loading: false,
     error: null,
     });
+
+    const location = useLocation();
 
     useEffect(() => {
         const fetchMovieDetails = async () => {
@@ -78,13 +80,12 @@ const MovieDetails = () => {
         </DivText>
         </DivCard>
         <DivLink>
-            <CardNavLink to={`/movies/${movieId}/cast`}>
+            <CardNavLink state={{from: location?.state?.from}} to={`/movies/${movieId}/cast`}>
                 Cast
             </CardNavLink>
-            <CardNavLink to={`/movies/${movieId}/reviews`}>
+            <CardNavLink state={{from: location?.state?.from}} to={`/movies/${movieId}/reviews`}>
                 Reviews
             </CardNavLink>
-            
         </DivLink>
         <Outlet/>
         </>

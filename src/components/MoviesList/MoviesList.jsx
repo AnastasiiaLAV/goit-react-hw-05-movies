@@ -5,7 +5,7 @@ import Chackman from "../../image/58e0ccb473a4915b2e1fa0fa.png";
 
 const MoviesList = ({items}) => {
     const location = useLocation();
-
+    
     const elements = items.map(({ id, title, poster_path}) => 
         <GalleryMoviesCard key={id}>
             <Link state={{from: location}} to={`/movies/${id}`}>
